@@ -8,82 +8,51 @@ interface StepperProps {
 
 export default function Stepper({ currentStep, onStepClick }: StepperProps) {
 	return (
-		<div className="flex flex-col items-center justify-center relative">
-			{/* Stepper container with circles and lines */}
-			<div className="flex items-center">
-				{steps.map((step, index) => {
-					const isActive = index === currentStep;
-					const isCompleted = index < currentStep;
-					const isClickable = onStepClick !== undefined;
-					
-					return (
-						<div key={index} className="flex items-center">
-							{/* Step Circle */}
-							<button
-								onClick={() => isClickable && onStepClick(index)}
-								disabled={!isClickable}
-								className={`
-									w-[30px] h-[30px] lg:w-10 lg:h-10 rounded-full flex items-center justify-center text-sm lg:text-base font-medium transition-colors duration-200 relative z-10
-									${isActive || isCompleted 
-										? 'text-white' 
-										: 'text-gray-600'
-									}
-									${isClickable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}
-								`}
-								style={{
-									backgroundColor: isActive || isCompleted ? '#3B82F6' : '#E5E7EB'
-								}}
-							>
-								{index + 1}
-							</button>
-							
-							{/* Connecting Line - only between steps */}
-							{index < steps.length - 1 && (
-								<div 
-									className="transition-colors duration-200"
-									style={{ 
-										width: '52px',
-										height: '4px',
-										backgroundColor: isCompleted ? '#3B82F6' : '#E5E7EB'
-									}}
-								/>
-							)}
-						</div>
-					);
-				})}
-			</div>
-			
-			{/* Labels positioned below stepper */}
-			<div className="flex items-center mt-2">
-				{steps.map((step, index) => {
-					const isActive = index === currentStep;
-					const isCompleted = index < currentStep;
-					
-					return (
-						<div 
-							key={`label-${index}`}
-							className="flex flex-col items-center transition-colors duration-200"
-							style={{
-								width: '82px' // 30px circle + 52px line
-							}}
+		<div className="progress-container">
+			{steps.map((step, index) => {
+				const isActive = index === currentStep;
+				const isCompleted = index < currentStep;
+				const isClickable = onStepClick !== undefined;
+				
+				return (
+					<div 
+						key={index} 
+						className={`
+							step transition-colors duration-200
+							${isCompleted ? 'completed' : ''}
+						`}
+					>
+						{/* Step Circle */}
+						<button
+							onClick={() => isClickable && onStepClick(index)}
+							disabled={!isClickable}
+							className={`
+								step-circle transition-colors duration-200
+								${isActive || isCompleted 
+									? 'bg-indigo-500 text-white' 
+									: 'bg-gray-200 text-gray-600'
+								}
+								${isClickable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}
+							`}
 						>
-							<span
-								style={{
-									fontFamily: 'Inter',
-									fontWeight: 600,
-									fontSize: '12px',
-									lineHeight: '16px',
-									letterSpacing: '0%',
-									textAlign: 'center',
-									color: isActive || isCompleted ? '#3B82F6' : '#374151'
-								}}
-							>
-								{step.title}
-							</span>
+							{index + 1}
+						</button>
+						
+						{/* Step Label */}
+						<div 
+							className={`
+								step-label transition-colors duration-200
+								${isActive || isCompleted 
+									? 'text-indigo-500' 
+									: 'text-gray-600'
+								}
+							`}
+						>
+							{step.title}
 						</div>
-					);
-				})}
-			</div>
+					</div>
+				);
+			})}
 		</div>
 	);
 }

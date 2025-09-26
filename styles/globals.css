@@ -18,3 +18,86 @@
         src: url("../public/fonts/RobotoSlab-Medium.ttf") format('truetype');
     }
 }
+
+@layer components {
+    .progress-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        position: relative;
+        min-width: 0;
+    }
+
+    .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 15px; /* Half of 30px circle height */
+        left: calc(50% + 15px); /* Start from right edge of circle */
+        width: calc(100% - 30px); /* Width minus circle diameter */
+        height: 2px;
+        background-color: #e5e7eb; /* Default gray color */
+        z-index: 1;
+    }
+
+    .step.completed:not(:last-child)::after {
+        background-color: #6366f1; /* Indigo color for completed steps */
+    }
+
+    .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.2s ease;
+    }
+
+    .step-label {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        font-family: 'Inter', sans-serif;
+        line-height: 16px;
+        letter-spacing: 0%;
+    }
+
+    /* Desktop styles */
+    @media (min-width: 1024px) {
+        .progress-container {
+            max-width: 500px;
+        }
+
+        .step:not(:last-child)::after {
+            top: 20px; /* Half of 40px circle height */
+            left: calc(50% + 20px); /* Start from right edge of 40px circle */
+            width: calc(100% - 40px); /* Width minus 40px circle diameter */
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .step-label {
+            font-size: 14px;
+        }
+    }
+}
