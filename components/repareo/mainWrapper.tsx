@@ -3,12 +3,25 @@ import type { ReactNode } from "react";
 export default function MainWrapper({ children }: { children: ReactNode }) {
 	return (
 		<main className={"max-w-screen-lg mx-auto"}>
+			{/* Desktop: 586.67 Fill + 341.33 = 928px total width with 132px gap */}
 			<div
 				className={
-					"grid grid-cols-1 lg:grid-cols-[2.5fr_1fr] lg:gap-24 px-6 lg:px-0"
+					"flex flex-col lg:flex-row px-6 lg:px-0"
 				}
+				style={{
+					gap: '0px' // Mobile gap
+				}}
 			>
-				{children}
+				{/* Left column */}
+				<div className="lg:w-[586.67px]">
+					{children[0]}
+				</div>
+				{/* 132px gap */}
+				<div className="hidden lg:block w-[132px]"></div>
+				{/* Right column */}
+				<div className="lg:w-[341.33px]">
+					{children[1]}
+				</div>
 			</div>
 		</main>
 	);
