@@ -13,17 +13,13 @@ export default function Home() {
 			<Header />
 			<MainWrapper>
 				{/* Left Column: Stepper + Content Box */}
-				<div className="lg:col-span-1">
-					<StepperWrapper>
-						<Stepper currentStep={currentStep} onStepClick={goToStep} />
-					</StepperWrapper>
-				</div>
+				<StepperWrapper>
+					<Stepper currentStep={currentStep} onStepClick={goToStep} />
+				</StepperWrapper>
 				{/* Right Column: Sidebar + Button */}
-				<div className="lg:col-span-1">
-					<ButtonWrapper>
-						<Button onClick={handleNextStep}>Next</Button>
-					</ButtonWrapper>
-				</div>
+				<ButtonWrapper>
+					<Button onClick={handleNextStep}>Next</Button>
+				</ButtonWrapper>
 			</MainWrapper>
 		</>
 	);

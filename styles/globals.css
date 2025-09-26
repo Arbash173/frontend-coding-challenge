@@ -42,16 +42,17 @@
     .step:not(:last-child)::after {
         content: '';
         position: absolute;
-        top: 15px; /* Half of 30px circle height */
+        top: 13px; /* Center vertically with 4px height */
         left: calc(50% + 15px); /* Start from right edge of circle */
-        width: calc(100% - 30px); /* Width minus circle diameter */
-        height: 2px;
+        width: calc(100% - 30px); /* Extend to next circle edge */
+        height: 4px; /* Mobile height */
         background-color: #e5e7eb; /* Default gray color */
         z-index: 1;
+        transition: background-color 0.8s ease;
     }
 
     .step.completed:not(:last-child)::after {
-        background-color: #6366f1; /* Indigo color for completed steps */
+        background-color: #3B82F6; /* Blue color only for completed steps */
     }
 
     .step-circle {
@@ -62,20 +63,27 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 8px;
-        font-size: 12px;
+        font-family: 'Inter', sans-serif;
         font-weight: 600;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0%;
+        text-align: center;
         border: none;
-        transition: all 0.2s ease;
+        transition: all 0.6s ease;
     }
 
     .step-label {
-        text-align: center;
-        font-size: 12px;
-        font-weight: 600;
-        white-space: nowrap;
         font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 12px;
         line-height: 16px;
         letter-spacing: 0%;
+        text-align: center;
+        white-space: nowrap;
+        transition: color 0.6s ease;
     }
 
     /* Desktop styles */
@@ -85,19 +93,32 @@
         }
 
         .step:not(:last-child)::after {
-            top: 20px; /* Half of 40px circle height */
+            top: 17px; /* Center vertically with 6px height */
             left: calc(50% + 20px); /* Start from right edge of 40px circle */
-            width: calc(100% - 40px); /* Width minus 40px circle diameter */
+            width: calc(100% - 40px); /* Extend to next circle edge */
+            height: 6px; /* Desktop height */
         }
 
         .step-circle {
             width: 40px;
             height: 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-style: normal;
             font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0%;
+            text-align: center;
         }
 
         .step-label {
-            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0%;
+            text-align: center;
         }
     }
 }

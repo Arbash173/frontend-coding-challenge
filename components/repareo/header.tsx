@@ -1,6 +1,6 @@
 export default function Header() {
 	return (
-		<header className={"pt-6 p-4 lg:pt-4 lg:border-b lg:border-gray-200"}>
+		<header className={"pt-6 pb-6 p-4 lg:pt-4 lg:pb-8 lg:border-b lg:border-gray-200"}>
 			<div className={"max-w-screen-lg mx-auto"}>
 				<img
 					src={"/repareo.svg"}

@@ -28,25 +28,22 @@ export default function Stepper({ currentStep, onStepClick }: StepperProps) {
 							disabled={!isClickable}
 							className={`
 								step-circle transition-colors duration-200
-								${isActive || isCompleted 
-									? 'bg-indigo-500 text-white' 
-									: 'bg-gray-200 text-gray-600'
-								}
 								${isClickable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}
 							`}
+							style={{
+								backgroundColor: isActive || isCompleted ? '#3B82F6' : '#E5E7EB',
+								color: isActive || isCompleted ? 'white' : '#6B7280'
+							}}
 						>
 							{index + 1}
 						</button>
 						
 						{/* Step Label */}
 						<div 
-							className={`
-								step-label transition-colors duration-200
-								${isActive || isCompleted 
-									? 'text-indigo-500' 
-									: 'text-gray-600'
-								}
-							`}
+							className="step-label transition-colors duration-200"
+							style={{
+								color: isActive || isCompleted ? '#374151' : '#6B7280'
+							}}
 						>
 							{step.title}
 						</div>

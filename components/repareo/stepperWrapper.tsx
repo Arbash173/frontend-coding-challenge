@@ -2,19 +2,19 @@ import type { ReactNode } from "react";
 
 export default function StepperWrapper({ children }: { children: ReactNode }) {
 	return (
-		<div className={"pt-6 lg:pt-0"}>
+		<div className={"pt-0"}>
 			{/* Stepper Container */}
-			<div className={"py-4 lg:py-8 lg:flex lg:items-center lg:justify-center"}>
+			<div className={"py-4 md:py-6 lg:py-8 lg:flex lg:items-center lg:justify-center"}>
 				{children}
 			</div>
 			
-			{/* Content Box - Mobile: 341.33px × 640px, Desktop: 586.64px × 638px */}
+			{/* Content Box - Mobile: 354px × 169px, Desktop: 586.64px × 638px */}
 			<div className={"mt-8"}>
 				<div
-					className="h-[640px] lg:h-[638px] relative mx-auto lg:mx-0"
+					className="h-[169px] lg:h-[638px] relative mx-auto lg:mx-0"
 					style={{
-						width: '341.33px', // Mobile width
-						height: '640px', // Mobile height
+						width: '354px', // Mobile width
+						height: '169px', // Mobile height
 						borderRadius: '12px',
 						background: '#FFFFFF'
 					}}

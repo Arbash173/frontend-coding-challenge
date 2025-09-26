@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export default function ButtonWrapper({ children }: { children: ReactNode }) {
 	return (
-		<div className={"lg:pt-12 lg:flex lg:flex-col lg:justify-between lg:h-full"}>
+		<div className={"pt-8 lg:pt-12 lg:flex lg:flex-col lg:justify-between lg:h-full"}>
 			{/* Sidebar box with exact styling */}
 			<div
 				className="hidden lg:block relative"
@@ -17,7 +17,11 @@ export default function ButtonWrapper({ children }: { children: ReactNode }) {
 			</div>
 			{/* Button at bottom */}
 			<div className="lg:mt-8">
-				{children}
+				<div 
+					className="w-full max-w-md mx-auto lg:mx-0 lg:max-w-none"
+				>
+					{children}
+				</div>
 			</div>
 		</div>
 	);
